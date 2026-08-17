@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Flappy 999 — Phaser Starter</title>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
+  <style> body{ margin:0; } canvas{ display:block; } </style>
+</head>
+<body>
+<script type="module">
+import GameScene from './src/game.js';
+const config = { type: Phaser.AUTO, width: 480, height: 640, backgroundColor:'#87ceeb', scene: [GameScene] };
+new Phaser.Game(config);
+</script>
+</body>
+</html>
