@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <link rel="manifest" href="manifest.json">
+  <title>Flappy 999 — 2P & CPU (Full Project)</title>
+  <style>
+    :root { --bg1:#87ceeb; --bg2:#a0e0ff; --panel:#ffffffcc; --accent:#333; }
+    html,body { height:100%; margin:0; background:linear-gradient(var(--bg1),var(--bg2)); font-family:Arial,Helvetica,sans-serif; }
+    #gameWrap { display:flex; flex-direction:column; align-items:center; padding:8px; gap:8px; max-width:1000px; margin:0 auto; }
+    #canvasWrap { position:relative; width:100%; max-width:520px; }
+    canvas { width:100%; height:auto; display:block; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.2); background:linear-gradient(var(--bg1),var(--bg2)); }
+    #hud { width:100%; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center; }
+    .panel { background:var(--panel); border-radius:8px; padding:8px; display:flex; gap:8px; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
+    label { font-size:14px; }
+    select,input { padding:6px; font-size:14px; }
+    .btn { padding:6px 10px; border-radius:6px; border:1px solid var(--accent); background:#fff; cursor:pointer; }
+    #info { color:#111; margin-top:4px; max-width:760px; text-align:center; font-size:13px; }
+    #scoreboard { font-weight:700; }
+    .small { font-size:0.9em; color:#222; }
+    #touchControls { position:absolute; left:0; right:0; top:0; bottom:0; pointer-events:none; display:flex; justify-content:space-between; align-items:flex-end; padding:12px; gap:6px; }
+    .touchBtn { pointer-events:auto; width:44%; height:60px; border-radius:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; user-select:none; }
+    #scoreList { display:flex; gap:8px; flex-direction:column; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div id="gameWrap">
+    <div id="canvasWrap">
+      <canvas id="game" width="480" height="640" aria-label="Flappy 999 game canvas"></canvas>
+      <div id="touchControls" aria-hidden="true">
+        <div id="touchLeft" class="touchBtn">FLAP P1</div>
+        <div id="touchRight" class="touchBtn">FLAP P2</div>
+      </div>
+    </div>
+
+    <div id="hud">
+      <div class="panel">
+        <label>Mode:
+          <select id="mode">
+            <option value="single">Single Player</option>
+            <option value="two">Two Players (local)</option>
+            <option value="pvscpu">Player vs CPU (player=left)</option>
+            <option value="all">All (2P + CPU)</option>
+          </select>
+        </label>
+        <label>CPU difficulty:
+          <select id="cpuDifficulty">
+            <option value="0.85">Easy</option>
+            <option value="1.0" selected>Normal</option>
+            <option value="1.15">Hard</option>
+          </select>
+        </label>
+        <button id="startBtn" class="btn">Start</button>
+        <button id="resetBtn" class="btn">Reset</button>
+      </div>
+
+      <div class="panel">
+        <div id="scoreboard" class="small">Level: 1 | Passed: 0</div>
+        <div id="highScore" class="small">High: —</div>
+      </div>
+
+      <div class="panel">
+        <button id="muteBtn" class="btn">🔊</button>
+        <input id="vol" type="range" min="0" max="1" step="0.01" value="0.6" />
+        <button id="fullscreenBtn" class="btn">⤢</button>
+        <button id="installBtn" class="btn" style="display:none">Install</button>
+      </div>
+    </div>
+
+    <div id="info" class="small">
+      Controls: Player 1 = Space or tap left. Player 2 = W/Up Arrow or tap right. 'All' mode shows two players and a CPU. High scores saved locally and can be synced to the optional leaderboard server.
+    </div>
+
+    <div class="panel">
+      <div id="scoreList"></div>
+    </div>
+  </div>
+
+<script src="./client-game.js"></script>
+<script>
+  // Register service worker and enable PWA install prompt
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(e => console.warn('SW registration failed', e));
+    });
+  }
+  // Load client-game.js (contains the main logic). That file is included below in the repo.
+</script>
+</body>
+</html>

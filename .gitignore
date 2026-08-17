@@ -1,0 +1,6 @@
+node_modules/
+server/scores.db
+.DS_Store
+dist/
+*.zip
+.env
