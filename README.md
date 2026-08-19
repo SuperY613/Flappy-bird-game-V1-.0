@@ -105,20 +105,4 @@ Suggested first PRs:
 - Replace the placeholder screenshot with a real GIF
 - Add a LICENSE (MIT is a common choice)
 
----
-
-## License
-If you want to make this open-source, consider adding an OSI-approved license like MIT. Add a `LICENSE` file to the repository to make the choice explicit.
-
----
-
-## Want help publishing the demo?
-If you'd like, I can:
-- Enable GitHub Pages and set up a build (if you want me to push files, tell me the target branch)
-- Create a polished demo build and add instructions to this README
-
-Tell me what you'd like me to do next and I'll proceed.
-
----
-
-Thanks for making something fun — happy flapping! 🐦💥
+ — happy flapping! 🐦💥
