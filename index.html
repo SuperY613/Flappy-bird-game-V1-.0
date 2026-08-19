@@ -20,7 +20,7 @@
     #scoreboard { font-weight:700; }
     .small { font-size:0.9em; color:#222; }
     #touchControls { position:absolute; left:0; right:0; top:0; bottom:0; pointer-events:none; display:flex; justify-content:space-between; align-items:flex-end; padding:12px; gap:6px; }
-    .touchBtn { pointer-events:auto; width:44%; height:60px; border-radius:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; user-select:none; }
+    .touchBtn { pointer-events:auto; width:44%; height:60px; border-radius:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; }
     #scoreList { display:flex; gap:8px; flex-direction:column; font-size:13px; }
   </style>
 </head>
@@ -69,7 +69,7 @@
     </div>
 
     <div id="info" class="small">
-      Controls: Player 1 = Space or tap left. Player 2 = W/Up Arrow or tap right. 'All' mode shows two players and a CPU. High scores saved locally and can be synced to the optional leaderboard server.
+      Controls: Player 1 = Space or tap left. Player 2 = W/Up Arrow or tap right. 'All' mode shows two players and a CPU. High scores saved locally and can be synced to the optional leaderboard server if present.
     </div>
 
     <div class="panel">
@@ -85,7 +85,6 @@
       navigator.serviceWorker.register('sw.js').catch(e => console.warn('SW registration failed', e));
     });
   }
-  // Load client-game.js (contains the main logic). That file is included below in the repo.
 </script>
 </body>
 </html>

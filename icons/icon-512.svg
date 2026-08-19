@@ -1,9 +1,1 @@
-<!-- simple SVG icon - 512x512 -->
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="72" fill="#87ceeb"/>
-  <g transform="translate(64,96)">
-    <ellipse cx="192" cy="156" rx="108" ry="84" fill="#ffcc00"/>
-    <circle cx="243" cy="136" r="12" fill="#000"/>
-    <rect x="18" y="304" width="300" height="80" rx="12" fill="#2e8b57"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><rect width="512" height="512" fill="#ffcc00"/><circle cx="256" cy="256" r="128" fill="#fff"/></svg>

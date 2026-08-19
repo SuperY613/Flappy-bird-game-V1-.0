@@ -1,25 +1,5 @@
-// sw.js - Service Worker
-const CACHE = 'flappy999-cache-v1';
-const ASSETS = [
-  './',
-  './index.html',
-  './client-game.js',
-  './manifest.json',
-  './icons/icon-192.svg',
-  './icons/icon-512.svg'
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(resp => resp || fetch(event.request).catch(()=>caches.match('./')))
-  );
-});
+// Service worker minimal caching for the demo
+const CACHE_NAME = 'flappy999-v1';
+const FILES_TO_CACHE = ['/', '/index.html', '/client-game.js', '/manifest.json', '/icons/icon-192.svg', '/icons/icon-512.svg'];
+self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))); self.skipWaiting(); });
+self.addEventListener('fetch', (e) => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
